@@ -1,38 +1,207 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: Poppins-Bolditalic;
+  src: url("./age-calculator-app-main//assets/fonts/Poppins-BoldItalic.ttf");
+}
+@font-face {
+  font-family: Poppins-Regular;
+  src: url("./age-calculator-app-main/assets/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("./age-calculator-app-main/assets/fonts/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: Poppins-ExtraBoldItalic;
+  src: url("./age-calculator-app-main/assets/fonts/Poppins-ExtraBoldItalic.ttf");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: Poppins-ExtraBold;
+  src: url("./age-calculator-app-main/assets/fonts/Poppins-ExtraBold.ttf");
+}
+@font-face {
+  font-family: Poppins-italic;
+  src: url("./age-calculator-app-main/assets/fonts/Poppins-Italic.ttf");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+:root {
+  /* Fonts */
+  --Poppins-Italic: Poppins-Italic;
+  --Poppins-ExtraBold: Poppins-ExtraBold;
+  --Poppins-ExtraBoldItalic: Poppins-ExtraBoldItalic;
+  --Poppins-Bold: Poppins-Bold;
+  --Poppins-bolditalic: Poppins-Bolditalic;
+  --Poppins-Regular: Poppins-Regular;
+
+  /* Primary */
+
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+
+  /* Neutral */
+
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+
+body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--Light-grey);
+  height: 100vh;
+}
+.container {
+  width: 520px;
+  height: 410px;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border-bottom-right-radius: 150px;
+  background-color: white;
+}
+.arr {
+  position: relative;
+  background-color: var(--Purple);
+  border-radius: 50%;
+  top: 10px;
+  right: -90%;
+  width: 65px;
+  height: 65px;
+}
+.arr-img{
+  position: relative;
+}
+.arr img {
+  position: absolute;
+  width: 35px;
+  left: 15px;
+  top: 15px;
+  height: auto;
+  cursor: pointer;
+}
+.err {
+  color: rgba(255, 0, 0, 0.841);
+  font-style: italic;
+  font-size: 12px;
+}
+.arr:focus {
+  background-color: var(--Off-black);
+}
+.line {
+  position: absolute;
+  top: 65%;
+  transform: translateX(0%);
+  width: 89.8%;
+  border: 0.1px solid hsla(0, 0%, 86%, 0.628);
+}
+.container .upper label {
+  font-family: var(--Poppins-ExtraBold);
+  color: var(--Smokey-grey);
+  letter-spacing: 1.5px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.upper {
+  gap: 18px;
+  display: flex;
+}
+.upper input {
+  outline: none;
+  border: none;
+  border: 1px solid var(--Light-grey);
+  border-radius: 5px;
+  width: 4.3em;
+  height: auto;
+  padding: 10px 15px;
+  margin-top: 0.3rem;
+  background-color: transparent;
+  caret-color: var(--Purple);
+  font-family: var(--Poppins-ExtraBold);
+}
+.upper .day.error input,
+.month.error input,
+.year.error input {
+  border: 1px solid red;
+}
+.upper .day.error label,
+.month.error label,
+.year.error label {
+  color: red;
+}
+.upper input[type="number"] {
+  font-size: 22px;
+}
+.upper input:hover,
+.upper input:focus {
+  border: 1px solid var(--Purple);
+}
+.upper input::placeholder {
+  font-family: var(--Poppins-ExtraBold);
+  color: var(--Smokey-grey);
+  transform: translateY(1.1px);
+  font-size: 25px;
+}
+.upper input::-webkit-outer-spin-button,
+.upper input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.cal {
+  line-height: 1.2;
+}
+.cal .dash {
+  color: var(--Purple);
+}
+.cal p {
+  font-family: var(--Poppins-ExtraBoldItalic);
+  font-size: 4.4rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 570px) {
+  .container {
+    width: 385px;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+  .arr {
+    position: relative;
+    background-color: var(--Purple);
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 65px;
+  }
+  .arr-img{
+    position: relative;
+    margin-top:1rem ;
+  }
+  .arr{
+    z-index: 1;
+  }
+  .arr img {
+    position: absolute;
+    width: 35px;
+    left: 15px;
+    top: 15px;
+    height: auto;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .line {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%);
+    width: 100%;
+    border: 0.1px solid hsla(0, 0%, 86%, 0.628);
+    z-index: 0;
   }
 }
